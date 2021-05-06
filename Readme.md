@@ -9,6 +9,16 @@ This is a personal project to demonstrate the skills I have learned into a real-
 * Thymeleaf
 * Docker
 
+### API - How to use
+
+The API used for this project is [ExchangeRate-API](https://www.exchangerate-api.com/).
+
+* Sign up for a free account and make a note of your API key.
+* Create file 'application.properties' in 'src/main/resources'.
+* Create entry 'API_KEY=YOUR_KEY_HERE' and replace 'YOUR_KEY_HERE' with your own API key.
+
+Method 'getApiKey()' in class PropertiesLoader deals with retrieving the API key.
+
 ### Project Aims
 
 The aim of the project is to create an application that provides a currency conversion
