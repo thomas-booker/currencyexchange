@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+<head>
+    <title>Hello World</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Hello <span th:text="|${name}|"/>!</h1>
+    <span th:if="${resources.length == 0}">No resources found.</span>
+    <div class="list-group">
+        <a th:each="resource : ${resources}"
+           th:href="${resource.url}" class="list-group-item">
+            <b th:text="${resource.name}"></b>
+        </a>
+    </div>
+</div>
+</body>
+<th:block layout:fragment="scripts">
+  <script src="/js/hello.js"></script>
+</th:block>
+</html>

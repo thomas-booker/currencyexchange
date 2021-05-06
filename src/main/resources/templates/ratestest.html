@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+<head>
+    <title>Rates Test</title>
+    <link rel="stylesheet" href="/css/hello.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Rates Test</h1>
+    <span th:if="${rates.isEmpty()}">No rates found.</span>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Flag</th>
+                <th scope="col">Currency</th>
+                <th scope="col">Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="key : ${rates.keySet()}">
+                <td><i th:id="${key}"></i></td>
+                <script th:inline="javascript">
+var showtext = [[${key}]];
+var showtextLower = showtext.toLowerCase();
+var classDec = "fa fa-"
+var classToUse = classDec + showtextLower;
+console.log(classToUse);
+document.getElementById([[${key}]]).className = classToUse;
+</script>
+<!--                <td><i classToUse></i></td>-->
+                <td th:text="${key}"></td>
+                <td th:text="${rates.get(key)}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<th:block layout:fragment="scripts">
+    <script src="/js/hello.js"></script>
+</th:block>
+</html>
