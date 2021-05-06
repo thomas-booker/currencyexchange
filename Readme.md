@@ -1,6 +1,6 @@
 # Currency Exchange Springboot Application
 
-This is a personal project to use skills I have learned into a real-world working application.
+This is a personal project to demonstrate the skills I have learned into a real-world working application.
 
 ### Technologies Used
 
