@@ -22,15 +22,14 @@
         <tbody>
             <tr th:each="key : ${rates.keySet()}">
                 <td><i th:id="${key}"></i></td>
-                <script th:inline="javascript">
-var showtext = [[${key}]];
-var showtextLower = showtext.toLowerCase();
-var classDec = "fa fa-"
-var classToUse = classDec + showtextLower;
-console.log(classToUse);
-document.getElementById([[${key}]]).className = classToUse;
-</script>
-<!--                <td><i classToUse></i></td>-->
+                    <script th:inline="javascript">
+                        var showtext = [[${key}]];
+                        var showtextLower = showtext.toLowerCase();
+                        var classDec = "fa fa-"
+                        var classToUse = classDec + showtextLower;
+                        console.log(classToUse);
+                        document.getElementById([[${key}]]).className = classToUse;
+                    </script>
                 <td th:text="${key}"></td>
                 <td th:text="${rates.get(key)}"></td>
             </tr>

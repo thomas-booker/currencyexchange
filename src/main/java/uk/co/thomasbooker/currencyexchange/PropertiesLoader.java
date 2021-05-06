@@ -10,8 +10,6 @@ import java.util.Properties;
 @Component
 public class PropertiesLoader {
 
-    public PropertiesLoader() {}
-
     public String getApiKey() throws IOException {
         return getPropertiesFile(URIs.CURRENCY_EXCHANGE_PROPERTIES).getProperty("API_KEY");
     }

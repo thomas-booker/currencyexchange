@@ -15,7 +15,6 @@ public class GetLatestRates {
     URIBuilder uriBuilder;
 
     public Object getLatestRatesTest() throws IOException {
-
         return currencyExchangeConnector.restTemplateExecute(uriBuilder.getLatestRatesBeautify());
     }
 }

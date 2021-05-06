@@ -17,25 +17,15 @@ public class CurrencyExchangeController {
     @Autowired
     GetLatestRates getLatestRates;
 
-    @RequestMapping("/cetest")
-    public String currencyExchangeTest() {
-        return "Currency Exchange Test";
-    }
-
     @RequestMapping("/")
     public String currencyExchangeRoot() {
-        return "Welcome to Thomas Booker's Currency Exchange";
+        return "index";
     }
 
     @RequestMapping("/getratestest")
     public String getRatesTest(Model model) throws IOException {
         JSONObject latestRates = new JSONObject(getLatestRates.getLatestRatesTest());
-
         Map<String, Object> map = latestRates.getJSONObject("body").getJSONObject("rates").toMap();
-//        for (Object key : map.keySet()) {
-//            Object value = map.get(key);
-//            System.out.println("Currency: " + key + " - Rate: " + value);
-//        }
 
         model.addAttribute("rates", map);
 

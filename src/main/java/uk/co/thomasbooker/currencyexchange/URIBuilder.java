@@ -13,9 +13,6 @@ public class URIBuilder {
     @Autowired
     PropertiesLoader propertiesLoader;
 
-    public URIBuilder() {
-    }
-
     public String getLatestRatesBeautify() throws IOException {
         return LATEST_BASE + BEAUTIFY + KEY + propertiesLoader.getApiKey();
     }
