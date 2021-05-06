@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class GetLatestRates {
+public class GetRates {
 
     @Autowired
     CurrencyExchangeConnector currencyExchangeConnector;
@@ -14,9 +14,13 @@ public class GetLatestRates {
     @Autowired
     URIBuilder uriBuilder;
 
-    public Object getLatestRatesTest() throws IOException {
-
-        String currency = CurrencyCodes.GBP;
+    public Object getRates(String currency) throws IOException {
         return currencyExchangeConnector.restTemplateExecute(uriBuilder.getLatestRates(currency));
     }
+
+    public Object getRates(String fromCurrency, String toCurrency, String amount) throws IOException {
+        return currencyExchangeConnector.restTemplateExecute(
+                uriBuilder.getConversionFromCurrencyToCurrency(fromCurrency, toCurrency, amount));
+    }
+
 }

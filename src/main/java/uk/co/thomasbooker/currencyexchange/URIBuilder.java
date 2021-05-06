@@ -13,7 +13,18 @@ public class URIBuilder {
     @Autowired
     PropertiesLoader propertiesLoader;
 
-    public String getLatestRatesBeautify() throws IOException {
-        return LATEST_BASE + BEAUTIFY + KEY + propertiesLoader.getApiKey();
+    public String getLatestRates(String currency) throws IOException {
+        System.out.println(BASE + propertiesLoader.getApiKey() + LATEST);
+        return BASE + propertiesLoader.getApiKey() + LATEST + currency;
+    }
+
+    public String getConversionFromCurrencyToCurrency(String fromCurrency, String toCurrency, String amount) throws IOException {
+        return BASE + propertiesLoader.getApiKey() +
+                PAIR + fromCurrency + toCurrency + amount;
+    }
+
+    public String getRateFromCurrencyToCurrency(String fromCurrency, String toCurrency) throws IOException {
+        return BASE + propertiesLoader.getApiKey() +
+                PAIR + fromCurrency + toCurrency;
     }
 }

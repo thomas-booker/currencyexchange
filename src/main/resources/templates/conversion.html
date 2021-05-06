@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+<head>
+  <title>Currency Conversion</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <h1>Currency Conversion</h1>
+  <span th:if="${rates.isEmpty()}">No rates found.</span>
+  <table class="table table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Rate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td th:text="${rates.get('base_code')}"></td>
+      <td th:text="${rates.get('target_code')}"></td>
+      <td th:text="${rates.get('conversion_result')}"></td>
+      <td th:text="${rates.get('conversion_rate')}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+<th:block layout:fragment="scripts">
+</th:block>
+</html>

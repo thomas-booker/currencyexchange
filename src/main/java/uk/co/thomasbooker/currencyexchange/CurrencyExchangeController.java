@@ -15,20 +15,35 @@ import java.util.*;
 public class CurrencyExchangeController {
 
     @Autowired
-    GetLatestRates getLatestRates;
+    GetRates getRates;
 
     @RequestMapping("/")
     public String currencyExchangeRoot() {
         return "index";
     }
 
-    @RequestMapping("/getratestest")
-    public String getRatesTest(Model model) throws IOException {
-        JSONObject latestRates = new JSONObject(getLatestRates.getLatestRatesTest());
-        Map<String, Object> map = latestRates.getJSONObject("body").getJSONObject("rates").toMap();
+    @RequestMapping("/getlatestrates")
+    public String getLatestRates(Model model) throws IOException {
+        String currency = CurrencyCodes.GBP;
+        JSONObject latestRates = new JSONObject(getRates.getRates(currency));
+        Map<String, Object> map = latestRates.getJSONObject("body").toMap();
 
         model.addAttribute("rates", map);
 
         return "ratestest";
+    }
+
+    @RequestMapping("/conversion")
+    public String getConversionFromCurrencyToCurrency(Model model) throws IOException {
+        String from = CurrencyCodes.USD;
+        String to = CurrencyCodes.GBP;
+        String amount = "150";
+
+        JSONObject convertedRate = new JSONObject(getRates.getRates(from, to, amount));
+        Map<String, Object> map = convertedRate.getJSONObject("body").toMap();
+
+        model.addAttribute("rates", map);
+
+        return "conversion";
     }
 }

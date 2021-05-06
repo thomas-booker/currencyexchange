@@ -6,7 +6,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -35,7 +34,8 @@ public class GetLatestRatesTest {
     @Test
     public void shouldReturnRestTemplate() throws IOException {
         // Given
-        Mockito.when(uriBuilder.getLatestRatesBeautify()).thenReturn("any");
+        String currency = CurrencyCodes.GBP;
+        Mockito.when(uriBuilder.getLatestRates(currency)).thenReturn("any");
         Mockito.when(currencyExchangeConnector.restTemplateExecute(anyString())).thenReturn(new ResponseEntity(HttpStatus.ACCEPTED));
 
         // When
